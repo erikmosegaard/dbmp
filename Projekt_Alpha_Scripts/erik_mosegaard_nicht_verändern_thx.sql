@@ -11,6 +11,8 @@ GO
 USE [DAlpha];
 GO
 
+
+
 ------------------------inf17_alpha2_01_create-tables.sql
 /* Datenbank master verwenden*/
 USE [master]
@@ -18,6 +20,20 @@ GO
 /* Datenbank DAlpha verwenden*/
 USE [DAlpha];
 GO
+
+----Tabellen Fallen lasen(löschen)
+----Wenn die tabellen vorhanden sind dann löschen sie zuerst die Tabellen
+--DROP TABLE T_TitelPlaylist;
+--DROP TABLE T_Bewertung;
+--DROP TABLE T_Titel;
+--DROP TABLE T_Playlist;
+--DROP TABLE T_Benutzer;
+--DROP TABLE T_Genre;
+--DROP TABLE T_Album;
+--DROP TABLE T_Interpret;
+--DROP TABLE T_Land;
+
+
 /* Tabelle T_Land erstellen*/
 CREATE TABLE T_Land(
 	LandID_PK INTEGER IDENTITY(1,1) PRIMARY KEY NOT NULL,
