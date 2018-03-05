@@ -105,6 +105,11 @@ CREATE TABLE T_TitelPlaylist(
 	PlaylistID_FK INTEGER FOREIGN KEY (PlaylistID_FK) REFERENCES T_Playlist (PlaylistID_PK) NOT NULL,
 	);
 
+
+
+----Constrainst hinzufügen
+
+
 ------------------------inf17_alpha2_02_insert.sql
 /* Datenbank master verwenden*/
 USE [master]
@@ -112,6 +117,7 @@ GO
 /* Datenbank DAlpha verwenden*/
 USE [DAlpha];
 GO
+
 
 
 ------------------------inf17_alpha2_03_select.sql
