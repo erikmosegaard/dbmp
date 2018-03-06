@@ -66,15 +66,15 @@ CREATE TABLE T_Titel(
 	TitelID_PK INTEGER IDENTITY(1,1) PRIMARY KEY NOT NULL, --PRIMARY KEY
 	TitelName nvarchar(300) NOT NULL,
 	Ausgabejahr decimal(4,0) NOT NULL,
-	Kaufpreis decimal(17,2) NOT NULL,
+	Kaufpreis decimal(6,2) NOT NULL,
 	Kaufdatum date NOT NULL,
 	Dauer time NOT NULL,
 	--Wenn der Land PK Land aktualisiert wird, wird auch in der Tabelle Titel die LandID_FK aktualisiert.(Siehe Zeile Untzen dran)
 	LandID_FK INTEGER FOREIGN KEY (LandID_FK) REFERENCES T_Land (LandID_PK) ON UPDATE CASCADE NOT NULL,
 
-	--Wenn der Benutzer aktualisiert wird, wird in der Tabelle Titel auch der FOREIGN UserID entsprechend aktualisiert.(Siehe 2 Zeilen Untzen dran)
-	--Wenn der Benutzer gelöscht wird auch der Titel gelöscht wegen dem FOREIGN KEY mit ON DELETE CASCADE (Siehe Zeile Untzen dran)
-	UserID_FK INTEGER FOREIGN KEY (UserID_FK) REFERENCES T_Benutzer (UserID_PK) ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
+	--Wenn der Benutzer aktualisiert wird, wird in der Tabelle Titel auch der FOREIGN UserID entsprechend aktualisiert.(Siehe 2 Zeilen Untzen dran)Nicht relevant!!!!!
+	--Wenn der Benutzer gelöscht wird auch der Titel gelöscht wegen dem FOREIGN KEY mit ON DELETE CASCADE (Siehe Zeile Untzen dran)Nicht relevant!!!!!!!!
+	UserID_FK INTEGER FOREIGN KEY (UserID_FK) REFERENCES T_Benutzer (UserID_PK) /*ON UPDATE CASCADE ON DELETE CASCADE*/ NOT NULL,
 
 	--Wenn der InterpretID aktualisiert wird wird auch in der Tabelle Titel der IinterpretFK aktualisiert(Siehe Zeile Untzen dran)
 	InterpretID_FK INTEGER FOREIGN KEY (InterpretID_FK) REFERENCES T_Interpret (InterpretID_PK) ON UPDATE CASCADE NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE T_Titel(
 	AlbumID_FK INTEGER FOREIGN KEY (AlbumID_FK) REFERENCES T_Album (AlbumID_PK) ON UPDATE CASCADE NOT NULL,
 
 	--Wenn der GenrePK aktualisiert wird wird auch in der Tabelle Titel GenreFK aktualisiert.(Siehe Zeile Untzen dran)
-	GenreID_FK INTEGER FOREIGN KEY (GenreID_FK) REFERENCES T_Genre (GenreID_PK) ON UPDATE CASCADE NOT NULL,
+	GenreID_FK INTEGER FOREIGN KEY (GenreID_FK) REFERENCES T_Genre (GenreID_PK) ON UPDATE CASCADE NOT NULL
 	);
 
 /* Tabelle T_Bewertung erstellen*/
@@ -105,11 +105,11 @@ CREATE TABLE T_TitelPlaylist(
 
 	--Wenn der der TitelID_PK gelöscht wird, wird in der Tabelle TitelPlaylist der Titel gelöscht. (Siehe 2 zeilen unten dran)
 	--Wenn der Titel_PK aktualisiert wird, wird in der Tabelle TitelPlaylist der Titel_FK aktualisiert. (Siehe zeile unten dran)
-	TitelID_FK INTEGER FOREIGN KEY (TitelID_FK) REFERENCES T_Titel (TitelID_PK) NOT NULL,
+	TitelID_FK INTEGER FOREIGN KEY (TitelID_FK) REFERENCES T_Titel (TitelID_PK) ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
 
 	--Wenn der PlaylistID_PK aktulisiert wird, wird auch in der Tabelle TitelPlaylist der Playlist_FK aktualisiert. (Siehe 2 zeilen unten dran)
 	--Wenn die PlaylistID_PK gelöscht wird, werden auch in der Tabelle TitelPLaylist alle einträge zum entsprechenden PlaylistID_PK gelöscht. (Siehe zeile unten dran)
-	PlaylistID_FK INTEGER FOREIGN KEY (PlaylistID_FK) REFERENCES T_Playlist (PlaylistID_PK) NOT NULL,
+	PlaylistID_FK INTEGER FOREIGN KEY (PlaylistID_FK) REFERENCES T_Playlist (PlaylistID_PK) ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
 	);
 
 /******Constrainst hinzufügen******/
